@@ -19,14 +19,14 @@ export const StatsCard: React.FC<StatsCardProps> = ({ stats }) => {
   const mostActiveCategoryCount = mostActiveCategoryEntry[1];
 
   return (
-    <Card className="shadow-soft mb-6">
-      <CardHeader className="pb-3">
-        <CardTitle className="flex items-center gap-2 text-lg">
-          <Target className="h-5 w-5 text-primary" />
+    <Card className="shadow-soft mb-4 sm:mb-6">
+      <CardHeader className="pb-2 sm:pb-3 px-3 sm:px-6 pt-3 sm:pt-6">
+        <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
+          <Target className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
           Your Progress
         </CardTitle>
       </CardHeader>
-      <CardContent className="space-y-4">
+      <CardContent className="space-y-3 sm:space-y-4 px-3 sm:px-6 pb-3 sm:pb-6">
         {/* Overall progress */}
         <div className="space-y-2">
           <div className="flex items-center justify-between text-sm">
@@ -37,35 +37,35 @@ export const StatsCard: React.FC<StatsCardProps> = ({ stats }) => {
         </div>
 
         {/* Quick stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="flex items-center gap-2 p-3 bg-success/10 rounded-lg border border-success/20">
-            <CheckCircle className="h-4 w-4 text-success" />
-            <div>
-              <div className="text-lg font-semibold text-success">{stats.completed}</div>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-4">
+          <div className="flex items-center gap-2 p-2 sm:p-3 bg-success/10 rounded-lg border border-success/20">
+            <CheckCircle className="h-3 w-3 sm:h-4 sm:w-4 text-success flex-shrink-0" />
+            <div className="min-w-0">
+              <div className="text-sm sm:text-lg font-semibold text-success">{stats.completed}</div>
               <div className="text-xs text-success/80">Completed</div>
             </div>
           </div>
 
-          <div className="flex items-center gap-2 p-3 bg-warning/10 rounded-lg border border-warning/20">
-            <Clock className="h-4 w-4 text-warning" />
-            <div>
-              <div className="text-lg font-semibold text-warning">{stats.pending}</div>
+          <div className="flex items-center gap-2 p-2 sm:p-3 bg-warning/10 rounded-lg border border-warning/20">
+            <Clock className="h-3 w-3 sm:h-4 sm:w-4 text-warning flex-shrink-0" />
+            <div className="min-w-0">
+              <div className="text-sm sm:text-lg font-semibold text-warning">{stats.pending}</div>
               <div className="text-xs text-warning/80">Pending</div>
             </div>
           </div>
 
-          <div className="flex items-center gap-2 p-3 bg-destructive/10 rounded-lg border border-destructive/20">
-            <AlertTriangle className="h-4 w-4 text-destructive" />
-            <div>
-              <div className="text-lg font-semibold text-destructive">{stats.overdue}</div>
+          <div className="flex items-center gap-2 p-2 sm:p-3 bg-destructive/10 rounded-lg border border-destructive/20">
+            <AlertTriangle className="h-3 w-3 sm:h-4 sm:w-4 text-destructive flex-shrink-0" />
+            <div className="min-w-0">
+              <div className="text-sm sm:text-lg font-semibold text-destructive">{stats.overdue}</div>
               <div className="text-xs text-destructive/80">Overdue</div>
             </div>
           </div>
 
-          <div className="flex items-center gap-2 p-3 bg-primary/10 rounded-lg border border-primary/20">
-            <TrendingUp className="h-4 w-4 text-primary" />
-            <div>
-              <div className="text-lg font-semibold text-primary">{stats.total}</div>
+          <div className="flex items-center gap-2 p-2 sm:p-3 bg-primary/10 rounded-lg border border-primary/20">
+            <TrendingUp className="h-3 w-3 sm:h-4 sm:w-4 text-primary flex-shrink-0" />
+            <div className="min-w-0">
+              <div className="text-sm sm:text-lg font-semibold text-primary">{stats.total}</div>
               <div className="text-xs text-primary/80">Total</div>
             </div>
           </div>
