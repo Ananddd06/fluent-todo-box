@@ -106,7 +106,7 @@ const Index = () => {
         stats={stats}
       />
 
-      <main className="container mx-auto px-4 pb-8">
+      <main className="container mx-auto px-3 sm:px-4 pb-6 sm:pb-8">
         <div className="max-w-4xl mx-auto">
           {/* Statistics */}
           <StatsCard stats={stats} />

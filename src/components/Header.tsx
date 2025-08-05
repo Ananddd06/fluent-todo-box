@@ -52,36 +52,36 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <header className="sticky top-0 z-50 glass border-b border-border/50 backdrop-blur-md mb-6">
-      <div className="container mx-auto px-4 py-4">
+      <div className="container mx-auto px-3 sm:px-4 py-3 sm:py-4">
         <div className="flex items-center justify-between">
           {/* Logo and title */}
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 gradient-hero rounded-xl flex items-center justify-center shadow-glow">
-              <span className="text-white font-bold text-lg">📝</span>
+          <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 gradient-hero rounded-xl flex items-center justify-center shadow-glow flex-shrink-0">
+              <span className="text-white font-bold text-sm sm:text-lg">📝</span>
             </div>
-            <div>
-              <h1 className="text-2xl font-bold gradient-primary bg-clip-text text-transparent">
+            <div className="min-w-0 flex-1">
+              <h1 className="text-lg sm:text-2xl font-bold gradient-primary bg-clip-text text-transparent truncate">
                 TodoMaster
               </h1>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-xs sm:text-sm text-muted-foreground truncate">
                 {stats.total > 0 
-                  ? `${stats.pending} of ${stats.total} tasks remaining`
-                  : 'Start your productivity journey'
+                  ? `${stats.pending} of ${stats.total} remaining`
+                  : 'Start your journey'
                 }
               </p>
             </div>
           </div>
 
           {/* Actions */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0">
             {/* Add todo button */}
             <Button 
               onClick={onAddTodo}
-              size="lg"
-              className="shadow-soft hover:shadow-glow transition-all duration-200"
+              size="default"
+              className="shadow-soft hover:shadow-glow transition-all duration-200 h-9 sm:h-10"
             >
-              <Plus className="h-4 w-4 mr-2" />
-              Add Todo
+              <Plus className="h-4 w-4 sm:mr-2" />
+              <span className="hidden sm:inline">Add Todo</span>
             </Button>
 
             {/* Theme toggle */}
@@ -89,12 +89,12 @@ export const Header: React.FC<HeaderProps> = ({
               variant="outline"
               size="icon"
               onClick={toggleTheme}
-              className="hover:bg-accent transition-smooth"
+              className="hover:bg-accent transition-smooth h-9 w-9 sm:h-10 sm:w-10"
             >
               {theme === 'light' ? (
-                <Moon className="h-4 w-4" />
+                <Moon className="h-3 w-3 sm:h-4 sm:w-4" />
               ) : (
-                <Sun className="h-4 w-4" />
+                <Sun className="h-3 w-3 sm:h-4 sm:w-4" />
               )}
             </Button>
 
@@ -104,15 +104,16 @@ export const Header: React.FC<HeaderProps> = ({
                 <Button 
                   variant="outline" 
                   size="icon"
-                  className="hover:bg-accent transition-smooth"
+                  className="hover:bg-accent transition-smooth h-9 w-9 sm:h-10 sm:w-10"
                 >
-                  <MoreVertical className="h-4 w-4" />
+                  <MoreVertical className="h-3 w-3 sm:h-4 sm:w-4" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-48">
+              <DropdownMenuContent align="end" className="w-48 bg-popover border border-border z-50">
                 <DropdownMenuItem 
                   onClick={() => handleExport('json')}
                   disabled={isExporting || stats.total === 0}
+                  className="focus:bg-accent"
                 >
                   <FileJson className="h-4 w-4 mr-2" />
                   Export as JSON
@@ -120,6 +121,7 @@ export const Header: React.FC<HeaderProps> = ({
                 <DropdownMenuItem 
                   onClick={() => handleExport('markdown')}
                   disabled={isExporting || stats.total === 0}
+                  className="focus:bg-accent"
                 >
                   <FileText className="h-4 w-4 mr-2" />
                   Export as Markdown
@@ -128,7 +130,7 @@ export const Header: React.FC<HeaderProps> = ({
                 <DropdownMenuItem 
                   onClick={onClearCompleted}
                   disabled={stats.completed === 0}
-                  className="text-destructive focus:text-destructive"
+                  className="text-destructive focus:text-destructive focus:bg-destructive/10"
                 >
                   <Trash2 className="h-4 w-4 mr-2" />
                   Clear Completed ({stats.completed})

@@ -42,11 +42,11 @@ export const FilterBar: React.FC<FilterBarProps> = ({
   };
 
   return (
-    <Card className="shadow-soft mb-6">
-      <CardContent className="p-4">
-        <div className="flex flex-col gap-4">
+    <Card className="shadow-soft mb-4 sm:mb-6">
+      <CardContent className="p-3 sm:p-4">
+        <div className="flex flex-col gap-3 sm:gap-4">
           {/* Filter title and stats */}
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div className="flex items-center gap-2">
               <Filter className="h-4 w-4 text-primary" />
               <h3 className="font-medium">Filters & Sort</h3>
@@ -57,15 +57,15 @@ export const FilterBar: React.FC<FilterBarProps> = ({
               )}
             </div>
             
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <div className="flex flex-wrap items-center gap-1 sm:gap-2 text-xs sm:text-sm text-muted-foreground">
               <span>{taskCounts.total} total</span>
-              <span>•</span>
+              <span className="hidden sm:inline">•</span>
               <span className="text-warning">{taskCounts.pending} pending</span>
-              <span>•</span>
+              <span className="hidden sm:inline">•</span>
               <span className="text-success">{taskCounts.completed} done</span>
               {taskCounts.overdue > 0 && (
                 <>
-                  <span>•</span>
+                  <span className="hidden sm:inline">•</span>
                   <span className="text-destructive">{taskCounts.overdue} overdue</span>
                 </>
               )}
@@ -73,7 +73,7 @@ export const FilterBar: React.FC<FilterBarProps> = ({
           </div>
 
           {/* Filter controls */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             {/* Category filter */}
             <div className="space-y-1">
               <label className="text-xs font-medium text-muted-foreground">Category</label>
@@ -81,10 +81,10 @@ export const FilterBar: React.FC<FilterBarProps> = ({
                 value={filter.category} 
                 onValueChange={(value) => onFilterChange({ ...filter, category: value as Category | 'all' })}
               >
-                <SelectTrigger className="h-9">
+                <SelectTrigger className="h-9 text-sm">
                   <SelectValue />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="bg-popover border border-border z-50">
                   <SelectItem value="all">All Categories</SelectItem>
                   {categories.map((cat) => (
                     <SelectItem key={cat} value={cat}>
@@ -104,10 +104,10 @@ export const FilterBar: React.FC<FilterBarProps> = ({
                 value={filter.status} 
                 onValueChange={(value) => onFilterChange({ ...filter, status: value as 'all' | 'pending' | 'completed' })}
               >
-                <SelectTrigger className="h-9">
+                <SelectTrigger className="h-9 text-sm">
                   <SelectValue />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="bg-popover border border-border z-50">
                   <SelectItem value="all">
                     <span className="flex items-center gap-2">
                       <Filter className="h-3 w-3" />
@@ -137,10 +137,10 @@ export const FilterBar: React.FC<FilterBarProps> = ({
                 value={filter.dueDateFilter} 
                 onValueChange={(value) => onFilterChange({ ...filter, dueDateFilter: value as 'all' | 'today' | 'week' | 'overdue' })}
               >
-                <SelectTrigger className="h-9">
+                <SelectTrigger className="h-9 text-sm">
                   <SelectValue />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="bg-popover border border-border z-50">
                   <SelectItem value="all">All Dates</SelectItem>
                   <SelectItem value="today">
                     <span className="flex items-center gap-2">
@@ -168,10 +168,10 @@ export const FilterBar: React.FC<FilterBarProps> = ({
             <div className="space-y-1">
               <label className="text-xs font-medium text-muted-foreground">Sort By</label>
               <Select value={sortOption} onValueChange={(value) => onSortChange(value as SortOption)}>
-                <SelectTrigger className="h-9">
+                <SelectTrigger className="h-9 text-sm">
                   <SelectValue />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="bg-popover border border-border z-50">
                   <SelectItem value="manual">
                     <span className="flex items-center gap-2">
                       <SortAsc className="h-3 w-3" />
