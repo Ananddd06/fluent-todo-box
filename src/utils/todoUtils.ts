@@ -36,8 +36,6 @@ export const formatDueDate = (dueDate: Date): string => {
 
 export const getCategoryColor = (category: Category): string => {
   const colors = {
-    ML: 'category-ml',
-    GATE: 'category-gate',
     Projects: 'category-projects',
     Personal: 'category-personal',
     Work: 'category-work'
@@ -82,12 +80,10 @@ export const downloadFile = (content: string, filename: string, type: string = '
   URL.revokeObjectURL(url);
 };
 
-export const categories: Category[] = ['ML', 'GATE', 'Projects', 'Personal', 'Work'];
+export const categories: Category[] = ['Projects', 'Personal', 'Work'];
 
 export const getCategoryIcon = (category: Category): string => {
   const icons = {
-    ML: '🤖',
-    GATE: '🎓',
     Projects: '💻',
     Personal: '👤',
     Work: '💼'
